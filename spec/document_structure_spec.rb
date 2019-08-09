@@ -12,16 +12,7 @@ RSpec.describe "Well-Formed HTML Document" do
       it 'the wrapper class section contains the correct header sizes and text content' do
         title_box = parsed_html.search('.wrapper').first
 
-        expect(title_box.children.any? {|ch| ch.name == "h1"}).to be == true, "No 'h1' tag(s) found"
-        expect(title_box.children.select {|ch| ch.name == "h1"}.first.children.first.text).to be == "Welcome to Riyadh", "Your 'h1' tag should contain the text 'Welcome to Riyadh'"
-
-        expect(title_box.children.any? {|ch| ch.name == "h2"}).to be == true, "No 'h2' tag found"
-        expect(title_box.children.select {|ch| ch.name == "h2"}.first.children.first.text).to be == "Where A Traditional Past Meets A Modern Future.", "Your 'h2' tag should contain the text 'Where A Traditional Past Meets A Modern Future.'"
-
-      end
-
-
-      it 'the content section contains the correct header sizes, text content, links and images' do
+              it 'the content section contains the correct header sizes, text content, links and images' do
         content_section = parsed_html.search('#content').first
 
         expect(content_section.children.any? {|ch| ch.name == "h3"}).to be == true, "No 'h3' tags found"
@@ -50,7 +41,7 @@ RSpec.describe "Well-Formed HTML Document" do
         expect(links.length).to be >= 2, "Make sure to include all three 'p' tags"
         expect(links[0].attributes["href"].value).to eq("http://www.lonelyplanet.com/saudi-arabia/riyadh")
         expect(links[1].attributes["href"].value).to eq("http://en.wikipedia.org/wiki/Riyadh")
-      
+
       end
 
   end
